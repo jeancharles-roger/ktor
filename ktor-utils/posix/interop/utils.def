@@ -1,5 +1,10 @@
 package = utils
 compilerOpts.mingw_x64 = -DMINGW
+compilerOpts.ios_x64 = -DIOS
+compilerOpts.ios_arm64 = -DIOS
+compilerOpts.ios_arm32 = -DIOS
+compilerOpts.macos_x64 = -DMACOS
+compilerOpts.linux_x64 = -DLINUX
 ---
 #include <pthread.h>
 #include <time.h>
@@ -30,5 +35,10 @@ time_t ktor_time(struct tm* tm) {
     return timegm(tm);
 #else
     return _mkgmtime(tm);
+#endif
+}
+
+void process_platform_event_loop() {
+#ifdef IOS
 #endif
 }

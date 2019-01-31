@@ -140,7 +140,7 @@ class DefaultWebSocketSessionImpl(
         val reasonToSend = reason ?: CloseReason(CloseReason.Codes.NORMAL, "")
         try {
             runOrCancelPinger()
-            send(Frame.Close(reasonToSend))
+            raw.outgoing.send(Frame.Close(reasonToSend))
         } finally {
             closeReasonRef.complete(reasonToSend)
         }

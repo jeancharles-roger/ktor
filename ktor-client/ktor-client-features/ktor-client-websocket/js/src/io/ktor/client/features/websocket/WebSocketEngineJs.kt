@@ -27,6 +27,8 @@ internal class DefaultJsWebSocketEngine() : WebSocketEngine {
             onerror = undefined
             continuation.resume(Unit)
         }
-        onerror = { continuation.resumeWithException(WebSocketException("$it")) }
+        onerror = {
+            continuation.resumeWithException(WebSocketException("$it"))
+        }
     }
 }

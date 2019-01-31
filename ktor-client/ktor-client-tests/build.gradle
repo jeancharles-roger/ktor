@@ -18,4 +18,3 @@ kotlin.sourceSets {
         runtimeOnly project(':ktor-client:ktor-client-cio')
     }
 }
-

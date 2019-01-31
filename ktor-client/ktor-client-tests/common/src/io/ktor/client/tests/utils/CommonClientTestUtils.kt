@@ -7,6 +7,13 @@ import kotlinx.coroutines.*
 import kotlinx.io.core.*
 
 /**
+ * Perform test against all clients from dependencies.
+ */
+expect fun clientsTest(
+    block: suspend TestClientBuilder<HttpClientEngineConfig>.() -> Unit
+): Unit
+
+/**
  * Perform test with selected client [engine].
  */
 fun clientTest(

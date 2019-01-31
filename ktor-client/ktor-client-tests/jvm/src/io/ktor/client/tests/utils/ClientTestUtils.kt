@@ -7,7 +7,7 @@ import java.util.*
 /**
  * Perform test against all clients from dependencies.
  */
-fun clientsTest(
+actual fun clientsTest(
     block: suspend TestClientBuilder<HttpClientEngineConfig>.() -> Unit
 ): Unit {
     val engines: List<HttpClientEngineContainer> = HttpClientEngineContainer::class.java.let {

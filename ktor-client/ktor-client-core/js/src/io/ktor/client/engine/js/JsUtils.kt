@@ -9,23 +9,23 @@ import kotlinx.io.core.*
 import org.khronos.webgl.*
 import org.w3c.fetch.*
 
-internal suspend fun CoroutineScope.toRaw(clientRequest: HttpRequest): RequestInit {
+internal suspend fun HttpRequest.toRaw(scope: CoroutineScope): RequestInit {
     val jsHeaders = js("({})")
-    mergeHeaders(clientRequest.headers, clientRequest.content) { key, value ->
+    mergeHeaders(headers, content) { key, value ->
         jsHeaders[key] = value
     }
 
-    val content = clientRequest.content
+    val content = content
     val bodyBytes = when (content) {
         is OutgoingContent.ByteArrayContent -> content.bytes()
         is OutgoingContent.ReadChannelContent -> content.readFrom().readRemaining().readBytes()
-        is OutgoingContent.WriteChannelContent -> writer(coroutineContext) { content.writeTo(channel) }
+        is OutgoingContent.WriteChannelContent -> scope.writer(scope.coroutineContext) { content.writeTo(channel) }
             .channel.readRemaining().readBytes()
         else -> null
     }
 
     return buildObject {
-        method = clientRequest.method.value
+        method = this@toRaw.method.value
         headers = jsHeaders
 
         bodyBytes?.let { body = Uint8Array(it.toTypedArray()) }

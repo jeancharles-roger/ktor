@@ -13,6 +13,10 @@ import kotlinx.coroutines.io.*
 import java.util.concurrent.*
 import kotlin.coroutines.*
 
+/**
+ * [HttpClientEngine] implemented without network and used for test purpose.
+ * See also [TestHttpClientConfig].
+ */
 class TestHttpClientEngine(override val config: TestHttpClientConfig) : HttpClientEngine {
     override val dispatcher: CoroutineDispatcher = Dispatchers.IO
     override val coroutineContext: CoroutineContext = dispatcher

@@ -2,6 +2,7 @@ package io.ktor.client.engine.curl
 
 import io.ktor.client.engine.*
 import libcurl.*
+import kotlin.native.concurrent.*
 
 // This function is thread unsafe!
 // The man page asks to run it once per program,
@@ -14,6 +15,9 @@ private val curlGlobalInitReturnCode = curl_global_init(CURL_GLOBAL_ALL)
 @ThreadLocal
 private val initHook = Curl
 
+/**
+ * [HttpClientEngineFactory] using a CURL based implementation for executing requests in kotlin-native.
+ */
 object Curl : HttpClientEngineFactory<HttpClientEngineConfig> {
 
     init {

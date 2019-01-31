@@ -1,6 +1,7 @@
 package io.ktor.client.engine
 
 import io.ktor.util.*
+import kotlin.native.concurrent.*
 
 @InternalAPI
 @Suppress("KDocMissingDocumentation")

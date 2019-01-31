@@ -1,7 +1,7 @@
-package io.ktor.http.cio.websocket
+package io.ktor.websocket
 
+import io.ktor.http.cio.websocket.*
 import io.ktor.util.cio.*
-import io.ktor.websocket.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 import kotlinx.io.pool.*

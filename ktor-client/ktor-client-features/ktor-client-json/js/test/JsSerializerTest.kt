@@ -7,7 +7,7 @@ import io.ktor.client.request.*
 import io.ktor.client.request.forms.*
 import kotlinx.coroutines.*
 import kotlinx.serialization.*
-import kotlinx.serialization.json.JSON
+import kotlinx.serialization.json.Json
 import kotlin.js.*
 import kotlin.test.*
 
@@ -23,7 +23,7 @@ class RequestTest {
     fun testReceiveFromGithub(): Promise<Unit> = GlobalScope.promise {
         val client = HttpClient {
             install(JsonFeature) {
-                serializer = KotlinxSerializer(JSON.nonstrict)
+                serializer = KotlinxSerializer(Json.nonstrict)
             }
         }
 

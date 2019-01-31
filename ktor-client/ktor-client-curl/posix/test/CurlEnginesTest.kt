@@ -62,7 +62,7 @@ class CurlEnginesTest {
     private fun clientTest(block: suspend (HttpClient) -> Unit): Unit = runBlocking {
         HttpClient(Curl) {
             install(JsonFeature) {
-                serializer = KotlinxSerializer(JSON.nonstrict).apply {
+                serializer = KotlinxSerializer(Json.nonstrict).apply {
                     register(HttpBinResponse.serializer())
                 }
             }

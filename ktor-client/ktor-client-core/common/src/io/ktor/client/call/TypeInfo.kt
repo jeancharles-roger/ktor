@@ -9,8 +9,8 @@ expect interface Type
 
 /**
  * Ktor type information.
- * [type]: source KClass<*>
- * [reifiedType]: type with substituted generics
+ * @property type: source KClass<*>
+ * @property reifiedType: type with substituted generics
  */
 data class TypeInfo(val type: KClass<*>, val reifiedType: Type)
 

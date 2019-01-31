@@ -10,7 +10,7 @@ import kotlinx.coroutines.io.*
 import org.w3c.fetch.*
 import kotlin.coroutines.*
 
-class JsHttpResponse(
+internal class JsHttpResponse(
     override val call: HttpClientCall,
     override val requestTime: GMTDate,
     private val response: Response,

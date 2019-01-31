@@ -9,7 +9,7 @@ import kotlin.coroutines.*
 import kotlin.js.*
 
 
-abstract class Utils : CoroutineScope {
+internal abstract class Utils : CoroutineScope {
     override val coroutineContext: CoroutineContext = SupervisorJob()
 
     companion object {

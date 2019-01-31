@@ -2,6 +2,7 @@ package io.ktor.client.tests.utils
 
 import io.ktor.client.*
 import io.ktor.client.engine.*
+import io.ktor.client.tests.utils.dispatcher.*
 import io.ktor.util.*
 import kotlinx.coroutines.*
 import kotlinx.io.core.*
@@ -27,7 +28,7 @@ fun clientTest(
 fun clientTest(
     client: HttpClient = HttpClient(),
     block: suspend TestClientBuilder<HttpClientEngineConfig>.() -> Unit
-): Unit = suspendTest {
+): Unit = testSuspend {
     val builder = TestClientBuilder<HttpClientEngineConfig>().also { it.block() }
 
     @Suppress("UNCHECKED_CAST")
@@ -42,7 +43,7 @@ fun clientTest(
 fun <T : HttpClientEngineConfig> clientTest(
     factory: HttpClientEngineFactory<T>,
     block: suspend TestClientBuilder<T>.() -> Unit
-): Unit = suspendTest {
+): Unit = testSuspend {
     val builder = TestClientBuilder<T>().apply { block() }
     val client = HttpClient(factory, block = builder.config)
 

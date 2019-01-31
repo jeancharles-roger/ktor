@@ -93,6 +93,8 @@ allprojects {
             def resourcesPrefix = name.endsWith("Test") ? "test-" : ""
             def platform = name[0..-5]
 
+            println "Source set: $project.name $srcDir $platform"
+
             kotlin.srcDirs = ["$platform/$srcDir"]
             resources.srcDirs = ["$platform/${resourcesPrefix}resources"]
 

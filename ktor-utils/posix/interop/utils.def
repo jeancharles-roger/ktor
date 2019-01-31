@@ -37,8 +37,3 @@ time_t ktor_time(struct tm* tm) {
     return _mkgmtime(tm);
 #endif
 }
-
-void process_platform_event_loop() {
-#ifdef IOS
-#endif
-}

@@ -5,6 +5,7 @@ apply plugin: "kotlinx-serialization"
 kotlin.sourceSets {
     commonMain.dependencies {
         api project(':ktor-client:ktor-client-core')
+        api project(':ktor-client:ktor-client-tests:ktor-client-tests-dispatcher')
     }
     jvmMain.dependencies {
         api project(':ktor-server:ktor-server-jetty')
